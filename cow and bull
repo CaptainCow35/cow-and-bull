@@ -1,0 +1,46 @@
+import random 
+
+digits = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"]
+random.shuffle(digits)
+
+
+secret = digits[0:4]
+
+print("Do u know what wordle is? well this is the same thing but with numbers and no repeating digits and bulls mean that there is number in the right place and the same numbber and cows are yellows which mean that one of the numbers u inputed is in the 4 digit code. ")
+cows = 0
+bulls = 0
+tries = 0
+
+def find_bulls(string, string2):
+
+    idontknow = 0
+    times = 0
+
+    for character in  string:
+        if character == string2[idontknow]:
+            times +=1
+        idontknow += 1
+
+    return times
+
+while bulls < 4:
+
+    cows = 0 
+    bulls = 0 
+    guess = input(("Type ur 4 digit code:   "))
+
+    for number in guess:
+
+        cows += secret.count(number)
+
+    bulls = find_bulls(guess, secret)
+
+    cows -= bulls
+
+    print(f"You have {bulls} bulls {cows} cows")
+
+    tries += 1
+
+
+print(f"you have won in {tries} in tries!!!!!!!!!!")
+
