@@ -5,21 +5,37 @@ deck += [10]* 4 *4
 random.shuffle(deck)
 player = deck.pop(0)
 dealer = deck.pop(0)
+win = player > dealer and dealer > 21 and player == 21
 
-while player < 21 or dealer < 17:
+while player < 21 and dealer < 17:
 
     print(f"Player has {player} \ndealer has {dealer}")
+    question = input ('do u want to draw a card? y/n: ')
 
-    if input ('do u want to draw a card? y/n: ') == 'y':
+    if question == 'y':
         player += deck.pop(0)
-        
+        dealer += deck.pop(0) 
+    elif question == 'n':
+        dealer += deck.pop(0) 
 
-    if player == 21 :
-        print('player wins!!!!!!')
-    if dealer == 18:
-        ('player wins')
-    
+#put code to find who wins here
+if player > 21 and dealer < 21 :
+    print(" it is a tie no one wins")
+
+if dealer > 21 and player == 21:
+    print("player wins") 
+
+if dealer < 21 and player > 21:
+    print("dealer wins") 
+
+elif player > dealer:
+    print('player win')
+
+elif dealer > player:
+    print("dealer win")
+
+if win == 3:
+    print('u uhave been kicked out for cheating')
 
 
 
-    dealer += deck.pop(0)
